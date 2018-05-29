@@ -1,0 +1,33 @@
+{
+  "name": "fit-text",
+  "version": "0.0.1",
+  "description": "Fits arbitrary text in a div with fixed height and a specified width",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --mode development --inline --hot",
+    "build": "webpack --mode production",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Fernando Brito",
+  "license": "MIT",
+  "dependencies": {
+    "@types/react": "^16.3.14",
+    "@types/react-dom": "^16.0.5",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0"
+  },
+  "devDependencies": {
+    "awesome-typescript-loader": "^5.0.0",
+    "css-loader": "^0.28.11",
+    "node-sass": "^4.9.0",
+    "postcss-loader": "^2.1.5",
+    "postcss-modules": "^1.1.0",
+    "sass-loader": "^7.0.1",
+    "source-map-loader": "^0.2.3",
+    "style-loader": "^0.21.0",
+    "typescript": "^2.8.3",
+    "webpack": "^4.10.0",
+    "webpack-cli": "^2.1.4",
+    "webpack-dev-server": "^3.1.4"
+  }
+}
