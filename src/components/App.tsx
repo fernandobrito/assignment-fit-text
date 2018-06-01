@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Cookies from 'js-cookie';
+
 import { TextInput } from './TextInput';
 import { Slider } from './Slider';
 import { TextDisplay } from './TextDisplay';
@@ -19,8 +21,8 @@ export class App extends React.Component<any, IAppState> {
     super(props);
 
     this.state = {
-      text: 'some text',
-      textDisplayWidth: 200,
+      text: Cookies.get('text') || 'some text',
+      textDisplayWidth: Cookies.get('textDisplayWidth') || 200,
       viewportWidth: 0
     };
   }
@@ -32,6 +34,11 @@ export class App extends React.Component<any, IAppState> {
 
   componentWillUnmount() {
     window.removeEventListener('resize', this.updateWindowDimensions);
+  }
+
+  componentDidUpdate() {
+    Cookies.set('text', this.state.text);
+    Cookies.set('textDisplayWidth', this.state.textDisplayWidth);
   }
 
   updateWindowDimensions = () => {
