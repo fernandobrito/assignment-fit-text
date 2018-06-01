@@ -5,6 +5,7 @@ import Cookies from 'js-cookie';
 import { TextInput } from './TextInput';
 import { Slider } from './Slider';
 import { TextDisplay } from './TextDisplay';
+import { LineChart } from './LineChart';
 
 import styles from './App.scss';
 
@@ -13,6 +14,7 @@ const OUTPUT_HEIGHT = 50;
 interface IAppState {
   text: string;
   textDisplayWidth: number;
+  textDisplayWidthHistory: number[];
   viewportWidth: number;
 }
 
@@ -23,6 +25,7 @@ export class App extends React.Component<any, IAppState> {
     this.state = {
       text: Cookies.get('text') || 'some text',
       textDisplayWidth: Cookies.get('textDisplayWidth') || 200,
+      textDisplayWidthHistory: [],
       viewportWidth: 0
     };
   }
@@ -49,6 +52,15 @@ export class App extends React.Component<any, IAppState> {
     this.setState({ [field]: event.target.value });
   };
 
+  handleWidthSliderChange = (event) => {
+    const value = event.target.value;
+
+    this.setState(state => ({
+      textDisplayWidth: value,
+      textDisplayWidthHistory: state.textDisplayWidthHistory.concat(parseInt(value))
+    }));
+  };
+
   render() {
     return (
       <div className={styles.container}>
@@ -67,7 +79,7 @@ export class App extends React.Component<any, IAppState> {
             min={this.state.viewportWidth * 0.05}
             max={this.state.viewportWidth * 0.90}
             value={this.state.textDisplayWidth}
-            onChange={this.handleChange('textDisplayWidth')}
+            onChange={this.handleWidthSliderChange}
           />
         </div>
 
@@ -82,6 +94,13 @@ export class App extends React.Component<any, IAppState> {
         >
           {this.state.text}
         </TextDisplay>
+
+        <div className={styles.chartWrapper}>
+          <LineChart
+            name="Display Width"
+            data={this.state.textDisplayWidthHistory}
+          />
+        </div>
       </div>
     )
   }
