@@ -13,6 +13,8 @@
   "dependencies": {
     "@types/react": "^16.3.14",
     "@types/react-dom": "^16.0.5",
+    "jquery": "^3.3.1",
+    "jquery-textfill": "^0.6.0",
     "react": "^16.4.0",
     "react-dom": "^16.4.0"
   },
