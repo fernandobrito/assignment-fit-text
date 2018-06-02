@@ -1,1 +1,1 @@
-export { LineChart } from './LineChart';
+export { ILineChartProps, LineChart } from './LineChart';

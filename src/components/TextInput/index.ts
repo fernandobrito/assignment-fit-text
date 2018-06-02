@@ -1,1 +1,1 @@
-export { TextInput } from './TextInput';
+export { ITextInputProps, TextInput } from './TextInput';

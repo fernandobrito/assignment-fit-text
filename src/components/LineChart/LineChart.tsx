@@ -2,41 +2,46 @@ import React from 'react';
 
 import { Line } from 'react-chartjs-2';
 
-export class LineChart extends React.Component<any, any> {
-  formatData() {
+export interface ILineChartProps {
+  name: string;
+  data: number[];
+}
+
+export const LineChart: React.SFC<ILineChartProps> = (props) => {
+  const options = {
+    legend: {
+      labels: {
+        fontColor: '#3a0e35'
+      }
+    },
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero: true,
+          fontColor: '#3a0e35'
+        }
+      }],
+      xAxes: [{
+        display: false
+      }]
+    }
+  };
+
+  const formatData = () => {
     return {
-      labels: Array.from(Array(this.props.data.length).keys()),
+      labels: Array.from(Array(props.data.length).keys()),
       datasets: [{
-        data: this.props.data,
-        label: this.props.name,
+        data: props.data,
+        label: props.name,
         radius: 0
       }]
     };
-  }
+  };
 
-  render() {
-    return (
-      <Line
-        data={this.formatData()}
-        options={{
-          legend: {
-            labels: {
-              fontColor: '#3a0e35'
-            }
-          },
-          scales: {
-            yAxes: [{
-              ticks: {
-                beginAtZero: true,
-                fontColor: '#3a0e35'
-              }
-            }],
-            xAxes: [{
-              display: false
-            }]
-          }
-        }}
-      />
-    );
-  }
-}
+  return (
+    <Line
+      data={formatData()}
+      options={options}
+    />
+  );
+};

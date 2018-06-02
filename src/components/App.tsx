@@ -18,7 +18,7 @@ interface IAppState {
   viewportWidth: number;
 }
 
-export class App extends React.Component<any, IAppState> {
+export class App extends React.Component<{}, IAppState> {
   constructor(props) {
     super(props);
 

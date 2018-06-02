@@ -17,6 +17,9 @@ module.exports = {
     'ts',
     'tsx'
   ],
+  moduleNameMapper: {
+    '\\.(css|less|scss|sass)$': 'identity-obj-proxy'
+  },
   transform: {
     '^.+\\.jsx?$': '<rootDir>/node_modules/babel-jest',
     '^.+\\.tsx?$': 'ts-jest'
