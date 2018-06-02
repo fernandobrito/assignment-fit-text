@@ -6,7 +6,9 @@
   "scripts": {
     "start": "webpack-dev-server --mode development --inline --hot",
     "build": "webpack --mode production",
-    "tslint": "tslint -p .",
+    "lint": "yarn run lint:ts; yarn run lint:sass",
+    "lint:ts": "tslint -p .",
+    "lint:sass": "sass-lint -v -q",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Fernando Brito",
@@ -28,6 +30,7 @@
     "node-sass": "^4.9.0",
     "postcss-loader": "^2.1.5",
     "postcss-modules": "^1.1.0",
+    "sass-lint": "^1.12.1",
     "sass-loader": "^7.0.1",
     "source-map-loader": "^0.2.3",
     "style-loader": "^0.21.0",
