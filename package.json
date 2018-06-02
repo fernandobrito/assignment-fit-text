@@ -6,10 +6,10 @@
   "scripts": {
     "start": "webpack-dev-server --mode development --inline --hot",
     "build": "webpack --mode production",
+    "test": "jest --coverage",
     "lint": "yarn run lint:ts; yarn run lint:sass",
     "lint:ts": "tslint -p .",
-    "lint:sass": "sass-lint -v -q",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint:sass": "sass-lint -v -q"
   },
   "author": "Fernando Brito",
   "license": "MIT",
@@ -25,8 +25,14 @@
     "react-dom": "^16.4.0"
   },
   "devDependencies": {
+    "@types/enzyme": "^3.1.10",
+    "@types/jest": "^23.0.0",
     "awesome-typescript-loader": "^5.0.0",
     "css-loader": "^0.28.11",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "jest": "^23.1.0",
+    "jest-enzyme": "^6.0.1",
     "node-sass": "^4.9.0",
     "postcss-loader": "^2.1.5",
     "postcss-modules": "^1.1.0",
@@ -34,6 +40,7 @@
     "sass-loader": "^7.0.1",
     "source-map-loader": "^0.2.3",
     "style-loader": "^0.21.0",
+    "ts-jest": "^22.4.6",
     "tslint": "^5.10.0",
     "tslint-config-airbnb": "^5.9.2",
     "typescript": "^2.8.3",
