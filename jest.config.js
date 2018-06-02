@@ -6,9 +6,7 @@ module.exports = {
   ],
   testRegex: '(/__tests__/.*|((\\.|-)test|(\\.|-)spec))\.(ts|tsx|js)$',
   testPathIgnorePatterns: [
-    '/node_modules/',
-    '/dll/',
-    '/__fixtures__/'
+    '/node_modules/'
   ],
   moduleFileExtensions: [
     'js',
@@ -27,4 +25,8 @@ module.exports = {
   collectCoverage: true,
   collectCoverageFrom: ['**/*.{ts,tsx}', '!**/global.d.ts'],
   coverageReporters: ['text', 'html', 'json'],
+  coveragePathIgnorePatterns: [
+    '/node_modules/',
+    '/src/index.tsx'
+  ]
 };

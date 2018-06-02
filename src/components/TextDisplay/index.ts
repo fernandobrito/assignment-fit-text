@@ -1,1 +1,1 @@
-export { TextDisplay } from './TextDisplay';
+export { ITextDisplayProps, TextDisplay } from './TextDisplay';
