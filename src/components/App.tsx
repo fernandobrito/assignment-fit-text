@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Cookies from 'js-cookie';
+import * as Cookies from 'js-cookie';
 
 import { TextInput } from './TextInput';
 import { Slider } from './Slider';
@@ -48,7 +48,7 @@ export class App extends React.Component<any, IAppState> {
     this.setState({ viewportWidth: window.innerWidth });
   };
 
-  handleChange = (field) => (event) => {
+  handleChange = field => (event) => {
     this.setState({ [field]: event.target.value });
   };
 
@@ -57,7 +57,7 @@ export class App extends React.Component<any, IAppState> {
 
     this.setState(state => ({
       textDisplayWidth: value,
-      textDisplayWidthHistory: state.textDisplayWidthHistory.concat(parseInt(value))
+      textDisplayWidthHistory: state.textDisplayWidthHistory.concat(parseInt(value, 10))
     }));
   };
 
@@ -102,6 +102,6 @@ export class App extends React.Component<any, IAppState> {
           />
         </div>
       </div>
-    )
+    );
   }
 }

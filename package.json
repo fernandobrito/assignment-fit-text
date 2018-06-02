@@ -6,6 +6,7 @@
   "scripts": {
     "start": "webpack-dev-server --mode development --inline --hot",
     "build": "webpack --mode production",
+    "tslint": "tslint -p .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Fernando Brito",
@@ -30,6 +31,8 @@
     "sass-loader": "^7.0.1",
     "source-map-loader": "^0.2.3",
     "style-loader": "^0.21.0",
+    "tslint": "^5.10.0",
+    "tslint-config-airbnb": "^5.9.2",
     "typescript": "^2.8.3",
     "webpack": "^4.10.0",
     "webpack-cli": "^2.1.4",

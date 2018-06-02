@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 import styles from './Slider.scss';
 
@@ -10,7 +10,7 @@ export interface ISliderProps {
   onChange(event: React.FormEvent<HTMLInputElement>): any;
 }
 
-export const Slider: React.SFC<ISliderProps> = (props) => (
+export const Slider: React.SFC<ISliderProps> = props => (
   <input
     id={props.id}
     type="range"

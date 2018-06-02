@@ -1,6 +1,4 @@
-import React from "react";
-
-import $ from 'jquery';
+import React from 'react';
 
 export interface ITextDisplayProps {
   className?: string;
@@ -47,6 +45,6 @@ export class TextDisplay extends React.Component<ITextDisplayProps, any> {
       >
         <span>{this.props.children}</span>
       </div>
-    )
+    );
   }
 }

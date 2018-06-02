@@ -11,9 +11,8 @@ export class LineChart extends React.Component<any, any> {
         label: this.props.name,
         radius: 0
       }]
-    }
-  };
-
+    };
+  }
 
   render() {
     return (

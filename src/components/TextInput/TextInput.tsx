@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 import styles from './TextInput.scss';
 
@@ -8,7 +8,7 @@ export interface ITextInputProps {
   onChange(event: React.FormEvent<HTMLInputElement>): any;
 }
 
-export const TextInput: React.SFC<ITextInputProps> = (props) => (
+export const TextInput: React.SFC<ITextInputProps> = props => (
   <input
     id={props.id}
     value={props.value}
