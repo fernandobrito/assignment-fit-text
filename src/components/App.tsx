@@ -65,6 +65,15 @@ export class App extends React.Component<any, IAppState> {
     return (
       <div className={styles.container}>
         <div className={styles.section}>
+          <h1 className={styles.title}>Fit text!</h1>
+          <p className={styles.intro}>
+            Write some text on the field below, select a width for a container
+            and see in real time how the text fits in the container with the largest
+            font size possible!
+          </p>
+        </div>
+
+        <div className={styles.section}>
           <label htmlFor="text-input" className={styles.label}>Text</label>
           <TextInput
             id="text-input"
@@ -73,7 +82,9 @@ export class App extends React.Component<any, IAppState> {
           />
         </div>
         <div className={styles.section}>
-          <label htmlFor="width-slider" className={styles.label}>Width</label>
+          <label htmlFor="width-slider" className={styles.label}>
+            Width <small>({this.state.textDisplayWidth}px)</small>
+          </label>
           <Slider
             id="width-slider"
             min={this.state.viewportWidth * 0.05}

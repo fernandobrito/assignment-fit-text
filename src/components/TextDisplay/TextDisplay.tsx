@@ -6,8 +6,10 @@ export interface ITextDisplayProps {
   height: number;
 }
 
+const $ = (window as any).$;
+
 const fitText = (element) => {
-  (window as any).$(element).textfill();
+  $(element).textfill();
 };
 
 export class TextDisplay extends React.Component<ITextDisplayProps, any> {
