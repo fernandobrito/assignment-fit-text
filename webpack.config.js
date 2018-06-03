@@ -1,4 +1,5 @@
 path = require('path');
+webpack = require('webpack');
 HtmlWebpackPlugin = require('html-webpack-plugin');
 CleanWebpackPlugin = require('clean-webpack-plugin');
 MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -19,6 +20,13 @@ module.exports = {
     publicPath: process.env.PUBLIC_PATH || './',
   },
 
+  devServer: {
+    hot: true,
+    watchContentBase: true,
+    contentBase: path.resolve(basePath, 'dist'),
+    publicPath: '/',
+    inline: true
+  },
 
   // Enable sourcemaps for debugging webpack's output.
   devtool: 'source-map',
@@ -63,8 +71,11 @@ module.exports = {
       filename: '[name].css',
       chunkFilename: '[id].css'
     }),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NamedModulesPlugin(),
     new HtmlWebpackPlugin({
-      template: 'src/index.html',
+      filename: path.resolve(basePath, 'dist', 'index.html'),
+      template: path.resolve(basePath, 'src', 'index.html'),
       chunksSortMode: 'dependency'
     })
   ],

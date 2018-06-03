@@ -4,7 +4,7 @@
   "description": "Fits arbitrary text in a div with fixed height and a specified width",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --mode development --inline --hot",
+    "start": "webpack-dev-server --mode development",
     "build": "webpack --mode production",
     "test": "jest --coverage",
     "lint": "yarn run lint:ts; yarn run lint:sass",
@@ -43,6 +43,7 @@
     "node-sass": "^4.9.0",
     "postcss-loader": "^2.1.5",
     "postcss-modules": "^1.1.0",
+    "react-hot-loader": "^4.2.0",
     "sass-lint": "^1.12.1",
     "sass-loader": "^7.0.1",
     "source-map-loader": "^0.2.3",
