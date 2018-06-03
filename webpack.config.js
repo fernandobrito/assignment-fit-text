@@ -16,7 +16,7 @@ module.exports = {
   output: {
     filename: '[name].bundle.[hash].js',
     path: path.resolve(basePath, 'dist'),
-    publicPath: '/',
+    publicPath: process.env.PUBLIC_PATH || './',
   },
 
 
