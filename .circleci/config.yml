@@ -1,0 +1,47 @@
+# Javascript Node CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:8.11
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          - v1-dependencies-
+
+      - run: yarn install
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+
+      - run: mkdir -p reports/junit
+
+      - run:
+          name: "lint:ts"
+          command: yarn lint:ts -t junit -o reports/junit/lint-ts-results.xml
+
+      - run:
+          name: "lint:sass"
+          command: yarn lint:sass -f junit -o reports/junit/lint-sass-results.xml
+
+      - run:
+          name: "test"
+          environment:
+            JEST_JUNIT_OUTPUT: reports/junit/test-results.xml
+          command: yarn test --ci --testResultsProcessor="jest-junit"
+
+      - store_test_results:
+          path: reports/junit
+      - store_artifacts:
+          path: reports/junit
