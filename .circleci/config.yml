@@ -41,6 +41,8 @@ jobs:
             JEST_JUNIT_OUTPUT: reports/junit/test-results.xml
           command: yarn test --ci --testResultsProcessor="jest-junit"
 
+      - run: bash <(curl -s https://codecov.io/bash)
+
       - store_test_results:
           path: reports/junit
       - store_artifacts:
