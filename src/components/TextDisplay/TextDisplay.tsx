@@ -28,8 +28,8 @@ export class TextDisplay extends React.Component<ITextDisplayProps, {}> {
     fitText(this.ref);
   }
 
-  componentWillReceiveProps() {
-    setTimeout(() => fitText(this.ref), 100);
+  componentDidUpdate() {
+    fitText(this.ref);
   }
 
   dimensions() {
