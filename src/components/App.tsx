@@ -26,7 +26,7 @@ export class App extends React.Component<{}, IAppState> {
       text: Cookies.get('text') || 'some text',
       textDisplayWidth: Cookies.get('textDisplayWidth') || 200,
       textDisplayWidthHistory: [],
-      viewportWidth: 0
+      viewportWidth: window.innerWidth
     };
   }
 
@@ -45,7 +45,13 @@ export class App extends React.Component<{}, IAppState> {
   }
 
   updateWindowDimensions = () => {
-    this.setState({ viewportWidth: window.innerWidth });
+    const maxWidth = this.calculateMaximumDisplayWidth();
+
+    this.setState({
+      viewportWidth: window.innerWidth,
+      textDisplayWidth: (this.state.textDisplayWidth > maxWidth ?
+        maxWidth : this.state.textDisplayWidth)
+    });
   };
 
   handleChange = field => (event) => {
@@ -53,13 +59,17 @@ export class App extends React.Component<{}, IAppState> {
   };
 
   handleWidthSliderChange = (event) => {
-    const value = event.target.value;
+    const value = parseInt(event.target.value, 10);
 
     this.setState(state => ({
       textDisplayWidth: value,
-      textDisplayWidthHistory: state.textDisplayWidthHistory.concat(parseInt(value, 10))
+      textDisplayWidthHistory: state.textDisplayWidthHistory.concat(value)
     }));
   };
+
+  calculateMaximumDisplayWidth() {
+    return Math.round(this.state.viewportWidth * 0.90);
+  }
 
   render() {
     return (
@@ -88,7 +98,7 @@ export class App extends React.Component<{}, IAppState> {
           <Slider
             id="width-slider"
             min={this.state.viewportWidth * 0.05}
-            max={this.state.viewportWidth * 0.90}
+            max={this.calculateMaximumDisplayWidth()}
             value={this.state.textDisplayWidth}
             onChange={this.handleWidthSliderChange}
           />
